@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản lý Đề án Cải tiến Chất lượng · Bệnh viện Tân Phú</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== TOPBAR ===== -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">BVTP</div>
+      <div>
+        <h1>QUẢN LÝ ĐỀ ÁN</h1>
+        <p>Bệnh viện Tân Phú · Dữ liệu đồng bộ từ Master Excel</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <div class="select-pill">
+        <label for="yearSelect">Năm</label>
+        <select id="yearSelect"></select>
+      </div>
+      <a id="reportLink" class="btn btn-primary" href="report.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M9 16h6M9 8h1M7 21h10a2 2 0 0 0 2-2V7l-5-5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2Z"/></svg>
+        Báo Cáo
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== KPI CARDS ===== -->
+  <div class="kpi-grid">
+    <div class="kpi-card kpi-c1">
+      <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6"/></svg></div>
+      <div><div class="kpi-value" id="kpiTotalKhoa">0</div><div class="kpi-label">Tổng khoa</div></div>
+    </div>
+    <div class="kpi-card kpi-c2">
+      <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 12l2 2 4-4M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg></div>
+      <div><div class="kpi-value" id="kpiDaDangKy">0</div><div class="kpi-label">Đã đăng ký</div></div>
+    </div>
+    <div class="kpi-card kpi-c3">
+      <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <div><div class="kpi-value" id="kpiChuaDangKy">0</div><div class="kpi-label">Chưa đăng ký</div></div>
+    </div>
+    <div class="kpi-card kpi-c4">
+      <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div><div class="kpi-value" id="kpiDungTienDo">0</div><div class="kpi-label">Đúng tiến độ</div></div>
+    </div>
+    <div class="kpi-card kpi-c5">
+      <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L14.7 3.86a2 2 0 0 0-3.4 0Z"/></svg></div>
+      <div><div class="kpi-value" id="kpiTreNguyCo">0</div><div class="kpi-label">Trễ / Nguy cơ</div></div>
+    </div>
+    <div class="kpi-card kpi-c6">
+      <div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="m8 21 4-13 4 13M12 3v5M5 8h14"/></svg></div>
+      <div><div class="kpi-value" id="kpiHoanThanh">0</div><div class="kpi-label">Hoàn thành</div></div>
+    </div>
+  </div>
+
+  <!-- ===== TOGGLES ===== -->
+  <div class="toggle-row">
+    <label class="toggle-item"><span>Trạng thái</span>
+      <span class="switch"><input type="checkbox" id="togStatus" checked><span class="track"></span></span>
+    </label>
+    <label class="toggle-item"><span>Xu hướng các năm</span>
+      <span class="switch"><input type="checkbox" id="togTrend" checked><span class="track"></span></span>
+    </label>
+    <label class="toggle-item"><span>Lĩnh vực</span>
+      <span class="switch"><input type="checkbox" id="togLinhVuc" checked><span class="track"></span></span>
+    </label>
+    <label class="toggle-item"><span>Khối chuyên môn</span>
+      <span class="switch"><input type="checkbox" id="togKhoi" checked><span class="track"></span></span>
+    </label>
+  </div>
+
+  <!-- ===== CHARTS ===== -->
+  <div class="charts-grid">
+    <div class="panel" id="panelDonut">
+      <div class="panel-title"><span class="dot"></span>Phân bố tình trạng</div>
+      <div class="chart-body"><canvas id="chartDonut"></canvas></div>
+      <ul class="legend-list" id="donutLegend"></ul>
+    </div>
+    <div class="panel" id="panelTrend">
+      <div class="panel-title"><span class="dot"></span>Số lượng đề án (các năm)</div>
+      <div class="chart-body"><canvas id="chartTrend"></canvas></div>
+    </div>
+    <div class="panel" id="panelLinhVuc">
+      <div class="panel-title"><span class="dot"></span>Lĩnh vực cải tiến</div>
+      <div id="linhVucList"></div>
+    </div>
+    <div class="panel" id="panelKhoi">
+      <div class="panel-title"><span class="dot"></span>Khối chuyên môn</div>
+      <div id="khoiList"></div>
+    </div>
+  </div>
+
+  <!-- ===== BOTTOM: TABLE + LOG ===== -->
+  <div class="bottom-grid">
+    <div class="panel">
+      <div class="table-toolbar">
+        <div class="panel-title" style="margin-bottom:0"><span class="dot"></span>Danh sách chi tiết</div>
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="tableSearch" placeholder="Lọc nhanh mã, khoa...">
+        </div>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="data-table">
+          <thead>
+            <tr><th>Mã</th><th>Đề Án &amp; Lĩnh vực</th><th>Khoa/Phòng</th><th>% Xong</th><th>Tình trạng</th></tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-title"><span class="dot"></span>Nhật ký hoạt động</div>
+      <ul class="log-list scroll-slim" id="actionLog"></ul>
+    </div>
+  </div>
+
+  <div class="footnote">Cập nhật lần cuối từ file Excel — xem README để biết cách đồng bộ dữ liệu mới.</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

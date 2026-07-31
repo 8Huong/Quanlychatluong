@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Báo cáo tiến độ đề án · Bệnh viện Tân Phú</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar no-print">
+    <div class="brand">
+      <div class="brand-mark">BVTP</div>
+      <div>
+        <h1 style="font-size:18px">BÁO CÁO TIẾN ĐỘ ĐỀ ÁN</h1>
+        <p>Tuỳ biến nội dung rồi xuất Word hoặc PDF</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <div class="select-pill">
+        <label for="reportYear">Năm</label>
+        <select id="reportYear"></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="report-shell">
+    <div class="report-sidebar no-print">
+      <h3>Tuỳ biến nội dung</h3>
+      <div class="check-row"><input type="checkbox" id="chkHeader" checked><label for="chkHeader">Tiêu ngữ hành chính</label></div>
+      <div class="check-row"><input type="checkbox" id="chkKpi" checked><label for="chkKpi">Số liệu tổng quan nhanh</label></div>
+      <div class="check-row"><input type="checkbox" id="chkKhoi" checked><label for="chkKhoi">Độ phủ khối chuyên môn</label></div>
+      <div class="check-row"><input type="checkbox" id="chkTre" checked><label for="chkTre">Danh sách đơn vị trễ hạn</label></div>
+      <div class="check-row"><input type="checkbox" id="chkFull" checked><label for="chkFull">Bảng chi tiết toàn bộ đề án</label></div>
+      <div class="check-row"><input type="checkbox" id="chkLog" checked><label for="chkLog">Nhật ký sự kiện gần đây</label></div>
+
+      <div class="sidebar-actions">
+        <button class="btn btn-primary btn-block" id="btnWord">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          Tải file Word
+        </button>
+        <button class="btn btn-success btn-block" id="btnPdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+          In / Tải PDF
+        </button>
+        <a class="btn btn-ghost btn-block" href="index.html">← Quay lại</a>
+      </div>
+    </div>
+
+    <div class="report-paper" id="reportPaper"></div>
+  </div>
+
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/report.js"></script>
+</body>
+</html>

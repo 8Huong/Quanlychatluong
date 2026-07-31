@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hồ sơ đề án</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page" style="max-width:1080px">
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">BVTP</div>
+      <div>
+        <h1 style="font-size:18px">HỒ SƠ ĐỀ ÁN: <span id="headerId">—</span></h1>
+        <a class="back-link" href="index.html">← Về Dashboard</a>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-ghost" onclick="window.print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+        In hồ sơ
+      </button>
+      <button class="btn btn-primary" onclick="closeTab()">Đóng Tab</button>
+    </div>
+  </div>
+
+  <div id="detailRoot"><div class="panel report-empty">Đang tải hồ sơ đề án…</div></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/detail.js"></script>
+</body>
+</html>
